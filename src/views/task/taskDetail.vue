@@ -119,16 +119,48 @@ export default {
         yjxcwcsj: '',
         x1sfhwcsj: ''
       },
-      setting1: true,
-      setting2: true,
-      setting3: true,
-      setting4: true,
-      setting5: true,
       value1: '',
       value2: '',
       value3: '',
       value4: '',
       value5: ''
+    }
+  },
+  computed: {
+    setting1: function () {
+      if (this.detailData.x1sfhwcsj) {
+        return false
+      } else {
+        return true
+      }
+    },
+    setting2: function () {
+      if (this.detailData.yjxcwcsj) {
+        return false
+      } else {
+        return true
+      }
+    },
+    setting3: function () {
+      if (this.detailData.ggxcwcsj) {
+        return false
+      } else {
+        return true
+      }
+    },
+    setting4: function () {
+      if (this.detailData.sjxcwcsj) {
+        return false
+      } else {
+        return true
+      }
+    },
+    setting5: function () {
+      if (this.detailData.x1ccfhwcsj) {
+        return false
+      } else {
+        return true
+      }
     }
   },
   methods: {
