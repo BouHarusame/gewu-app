@@ -1,7 +1,7 @@
 import axios from 'axios'
 import router from 'vue-router'
 axios.defaults.timeout = 5000
-axios.defaults.baseURL = 'http://www.mobilecoding.org:9081/railage'
+axios.defaults.baseURL = 'http://219.145.220.61:8888/railage/'
 // axios.defaults.baseURL = ''
 
 // http request 拦截器

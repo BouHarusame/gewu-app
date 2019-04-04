@@ -30,21 +30,36 @@ export default {
         'userid': this.userName,
         'password': pwd
       }
-      this.$post('/login', options)
-        .then(res => {
-          console.log(res)
-          if (res.success) {
-            sessionStorage.setItem('auth-token', res.data.token)
-            sessionStorage.setItem('username', res.data.username)
-            this.$router.push({ name: 'task' })
-          } else {
+      if (this.userName && pwd) {
+        this.$post('/login', options)
+          .then(res => {
+            console.log(res)
+            if (res.success) {
+              sessionStorage.setItem('auth-token', res.data.token)
+              sessionStorage.setItem('username', res.data.username)
+              this.$router.push({ name: 'task' })
+            } else {
+              Toast({
+                message: res.code,
+                position: 'center',
+                duration: 3000
+              })
+            }
+          })
+          .catch(err => {
             Toast({
-              message: res.code,
+              message: err,
               position: 'center',
               duration: 3000
             })
-          }
+          })
+      } else {
+        Toast({
+          message: '请输入用户名和密码',
+          position: 'center',
+          duration: 3000
         })
+      }
     }
   },
   components: {
