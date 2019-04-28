@@ -8,6 +8,7 @@ import router from './router'
 import { post, fetch, patch, put } from './utils/http'
 import './mock/mock'
 import './utils/rem.js'
+import './assets/css/font-awesome.min.css'
 import './styles/index.styl'
 
 Vue.prototype.$post = post

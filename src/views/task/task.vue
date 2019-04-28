@@ -7,7 +7,7 @@
       </div>
       <span class="text" @click="handleCancelSearch">取消</span>
     </div>
-    <div class="page-loadmore-wrapper" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
+    <div class="page-loadmore-wrapper" ref="wrapper">
       <mt-loadmore :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore">
         <div class="task-content">
           <ul>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="item-text">
                   <h4>{{ item.cph }}</h4>
-                  <p>{{ handleFormatDate(item.dcsj) }} 的卸车单，请登记处理！</p>
+                  <p>{{ handleFormatDate(item.x1sfhwcsj) }} 的卸车单，请登记处理！</p>
                 </div>
               </div>
               <div class="item-right" @click="handleClickDetail(item)">处理</div>
@@ -32,7 +32,7 @@
         </div>
       </mt-loadmore>
     </div>
-    <tab-bar></tab-bar>
+    <tab-bar :current=0></tab-bar>
   </div>
 </template>
 <script>
@@ -44,6 +44,7 @@ export default {
     return {
       searchFlag: true,
       listData: [],
+      listOldData: [],
       searchValue: '',
       copyListData: [],
       list: [],
@@ -63,6 +64,7 @@ export default {
             if (res.data && res.data.records) {
               this.listData = res.data.records
               this.total = res.data.total
+              this.listOldData = deepClone(this.listData)
               this.copyListData.push(...deepClone(this.listData))
             }
           } else {
@@ -80,15 +82,16 @@ export default {
     },
     handleFormatDate (val) {
       let date = new Date(val)
+      // date.toLocaleDateString()
       return formatDate(date, 'yyyy-MM-dd')
     },
     handleSearch () {
-      console.log(111)
+      // console.log(111)
       this.debounce(this.search(), 200)
     },
     search () {
       let reg = new RegExp(this.searchValue, 'i')
-      this.listData = this.listData.filter(item => {
+      this.listData = this.listOldData.filter(item => {
         if (item.cph.match(reg)) {
           // console.log(item)
           return item
@@ -108,6 +111,7 @@ export default {
     },
     handleCancelSearch () {
       this.listData = this.copyListData
+      this.listOldData = deepClone(this.listData)
     },
     handleBottomChange (status) {
       this.bottomStatus = status
@@ -144,7 +148,7 @@ export default {
 <style lang="stylus" scoped>
 .task
   width 100%
-  height 100vh
+  min-height 100vh
   padding-bottom 1.6rem
   box-sizing border-box
   position relative

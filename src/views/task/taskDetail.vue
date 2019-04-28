@@ -11,12 +11,13 @@
             <div class='item-icon'>
             </div>
             <div class='item-text'>
-              <h4>{{ handleToFormat(detailData.x1sfhwcsj) }}</h4>
-              <p>设防完成时间</p>
+              <h4>{{ handleToFormat(detailData.ddsj) }}</h4>
+              <p>调到时间</p>
             </div>
           </div>
-          <div class='item-right' @click="open('picker1')" v-if='setting1'>设定</div>
-          <div class='item-right1' v-else>设定</div>
+          <div class='item-right' @click="open('picker1')">设定</div>
+          <!-- <div class='item-right' @click="open('picker1')" v-if='setting1'>设定</div> -->
+          <!-- <div class='item-right1' v-else>设定</div> -->
           <mt-datetime-picker
             ref='picker1'
             v-model='value1'
@@ -30,12 +31,12 @@
             <div class='item-icon'>
             </div>
             <div class='item-text'>
-              <h4>{{ handleToFormat(detailData.yjxcwcsj) }}</h4>
-              <p>预计装/卸车完成时间</p>
+              <h4>{{ handleToFormat(detailData.dcsj) }}</h4>
+              <p>调出时间</p>
             </div>
           </div>
-          <div class='item-right' @click="open('picker2')" v-if='setting2'>设定</div>
-          <div class='item-right1' v-else>设定</div>
+          <div class='item-right' @click="open('picker2')">设定</div>
+          <!-- <div class='item-right1' v-else>设定</div> -->
           <mt-datetime-picker
             ref='picker2'
             v-model='value2'
@@ -49,12 +50,38 @@
             <div class='item-icon'>
             </div>
             <div class='item-text'>
-              <h4>{{ handleToFormat(detailData.ggxcwcsj) }}</h4>
-              <p>预计装/卸车完成时间</p>
+              <!-- <h4>{{ handleToFormat(detailData.ggxcwcsj) }}</h4> -->
+              <div class='flex'>
+                <p>核检时间（分钟）</p>
+              <input v-model="detailData.hjsj"  />
+              </div>
             </div>
           </div>
-          <div class='item-right' @click="open('picker3')" v-if='setting3'>设定</div>
-          <div class='item-right1' v-else>设定</div>
+        </li>
+        <li class='task-detail-item'>
+          <div class='item-left'>
+            <div class='item-icon'>
+            </div>
+            <div class='item-text'>
+              <!-- <h4>{{ handleToFormat(detailData.ggxcwcsj) }}</h4> -->
+              <div class="flex">
+                <p>核检说明</p>
+                <input v-model="detailData.hjsm"  />
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class='task-detail-item'>
+          <div class='item-left'>
+            <div class='item-icon'>
+            </div>
+            <div class='item-text'>
+              <h4>{{ handleToFormat(detailData.x1sfhwcsj) }}</h4>
+              <p>卸一设防护完成时间</p>
+            </div>
+          </div>
+          <div class='item-right' @click="open('picker3')" >设定</div>
+          <!-- <div class='item-right1' v-else>设定</div> -->
           <mt-datetime-picker
             ref='picker3'
             v-model='value3'
@@ -68,12 +95,12 @@
             <div class='item-icon'>
             </div>
             <div class='item-text'>
-              <h4>{{ handleToFormat(detailData.sjxcwcsj) }}</h4>
-              <p>实际装/卸车完成时间</p>
+              <h4>{{ handleToFormat(detailData.x2sfhwcsj) }}</h4>
+              <p>卸二设防护完成时间</p>
             </div>
           </div>
-          <div class='item-right' @click="open('picker4')" v-if='setting4'>设定</div>
-          <div class='item-right1' v-else>设定</div>
+          <div class='item-right' @click="open('picker4')">设定</div>
+          <!-- <div class='item-right1' v-else>设定</div> -->
           <mt-datetime-picker
             ref='picker4'
             v-model='value4'
@@ -88,17 +115,96 @@
             </div>
             <div class='item-text'>
               <h4>{{ handleToFormat(detailData.x1ccfhwcsj) }}</h4>
-              <p>撤除防护时间</p>
+              <p>卸一撤除防护完成时间</p>
             </div>
           </div>
-          <div class='item-right' @click="open('picker5')" v-if='setting5'>设定</div>
-          <div class='item-right1' v-else>设定</div>
+          <div class='item-right' @click="open('picker5')">设定</div>
+          <!-- <div class='item-right1' v-else>设定</div> -->
           <mt-datetime-picker
             ref='picker5'
             v-model='value5'
             :closeOnClickModal='false'
             @visible-change='handleVisibleChange'
             @confirm='handleChange5'>
+          </mt-datetime-picker>
+        </li>
+        <li class='task-detail-item'>
+          <div class='item-left'>
+            <div class='item-icon'>
+            </div>
+            <div class='item-text'>
+              <h4>{{ handleToFormat(detailData.x2ccfhwcsj) }}</h4>
+              <p>卸二撤除防护完成时间</p>
+            </div>
+          </div>
+          <div class='item-right' @click="open('picker6')">设定</div>
+          <!-- <div class='item-right1' v-else>设定</div> -->
+          <mt-datetime-picker
+            ref='picker6'
+            v-model='value6'
+            :closeOnClickModal='false'
+            @visible-change='handleVisibleChange'
+            @confirm='handleChange6'>
+          </mt-datetime-picker>
+        </li>
+        <li class='task-detail-item'>
+          <div class='item-left'>
+            <div class='item-icon'>
+            </div>
+            <div class='item-text'>
+              <h4>{{ handleToFormat(detailData.yjxcwcsj) }}</h4>
+              <p>预计卸车完成时间</p>
+            </div>
+          </div>
+          <div class='item-right' @click="open('picker7')">设定</div>
+          <!-- <div class='item-right1' v-else>设定</div> -->
+          <mt-datetime-picker
+            ref='picker7'
+            v-model='value7'
+            :closeOnClickModal='false'
+            @visible-change='handleVisibleChange'
+            @confirm='handleChange7'>
+          </mt-datetime-picker>
+        </li>
+        <li class='task-detail-item'>
+          <div class='item-left'>
+            <div class='item-icon'>
+            </div>
+            <div class='item-text'>
+              <h4>{{ handleToFormat(detailData.ggccwcsj) }}</h4>
+              <p>更改预计卸车完成时间</p>
+            </div>
+          </div>
+          <div class='item-right' @click="open('picker8')">设定</div>
+          <!-- <div class='item-right1' v-else>设定</div> -->
+          <mt-datetime-picker
+            ref='picker8'
+            v-model='value8'
+            :closeOnClickModal='false'
+            @visible-change='handleVisibleChange'
+            @confirm='handleChange8'>
+          </mt-datetime-picker>
+        </li>
+        <li class='task-detail-item'>
+          <div class='item-left'>
+            <div class='item-icon'>
+            </div>
+            <div class='item-text'>
+              <h4>{{ handleToFormat(detailData.sjxcwcsj) }}</h4>
+              <p>实际卸车完成时间</p>
+            </div>
+          </div>
+          <div class='item-right' @click="open('picker9')">设定</div>
+          <!-- <div class='item-right1' v-else>设定</div> -->
+          <mt-datetime-picker
+            ref='picker9'
+            v-model='value9'
+            :closeOnClickModal='false'
+            year-format="{value}年"
+            month-format="{value}月"
+            date-format="{value} 日"
+            @visible-change='handleVisibleChange'
+            @confirm='handleChange9'>
           </mt-datetime-picker>
         </li>
       </ul>
@@ -113,17 +219,25 @@ export default {
   data () {
     return {
       detailData: {
-        x1ccfhwcsj: '',
-        sjxcwcsj: '',
-        ggxcwcsj: '',
+        ddsj: '',
+        dcsj: '',
+        hjsj: '',
+        hjsm: '',
+        x1sfhwcsj: '',
+        x2sfhwcsj: '',
         yjxcwcsj: '',
-        x1sfhwcsj: ''
+        ggccwcsj: '',
+        sjxcwcsj: ''
       },
       value1: '',
       value2: '',
       value3: '',
       value4: '',
-      value5: ''
+      value5: '',
+      value6: '',
+      value7: '',
+      value8: '',
+      value9: ''
     }
   },
   computed: {
@@ -174,27 +288,39 @@ export default {
       this.$set(this.detailData, key, value.getTime())
     },
     handleChange1 (value) {
-      this.handleChange('x1sfhwcsj', value)
-      this.setting1 = false
+      this.handleChange('ddsj', value)
+      // this.setting1 = false
     },
     handleChange2 (value) {
-      this.handleChange('yjxcwcsj', value)
-      this.setting2 = false
+      this.handleChange('dcsj', value)
+      // this.setting2 = false
     },
     handleChange3 (value) {
-      this.handleChange('ggxcwcsj', value)
-      this.setting3 = false
+      this.handleChange('hjsj', value)
+      // this.setting3 = false
     },
     handleChange4 (value) {
-      this.handleChange('sjxcwcsj', value)
-      this.setting4 = false
+      this.handleChange('hjsm', value)
+      // this.setting4 = false
     },
     handleChange5 (value) {
-      this.handleChange('x1ccfhwcsj', value)
-      this.setting5 = false
+      this.handleChange('x1sfhwcsj', value)
+      // this.setting5 = false
+    },
+    handleChange6 (value) {
+      this.handleChange('x2sfhwcsj', value)
+    },
+    handleChange7 (value) {
+      this.handleChange('yjxcwcsj', value)
+    },
+    handleChange8 (value) {
+      this.handleChange('ggccwcsj', value)
+    },
+    handleChange9 (value) {
+      this.handleChange('sjxcwcsj', value)
     },
     handleToFormat (val) {
-      console.log(val)
+      // console.log(val)
       if (!val) {
         return '未设定'
       } else {
@@ -211,10 +337,15 @@ export default {
           id: this.detailData.id,
           flag: 'U',
           x1ccfhwcsj: this.detailData.x1ccfhwcsj,
-          sjxcwcsj: this.detailData.sjxcwcsj,
-          ggxcwcsj: this.detailData.ggxcwcsj,
+          ddsj: this.detailData.ddsj,
+          dcsj: this.detailData.dcsj,
+          hjsj: this.detailData.hjsj,
+          hjsm: this.detailData.hjsm,
+          x1sfhwcsj: this.detailData.x1sfhwcsj,
+          x2sfhwcsj: this.detailData.x2sfhwcsj,
           yjxcwcsj: this.detailData.yjxcwcsj,
-          x1sfhwcsj: this.detailData.x1sfhwcsj
+          ggccwcsj: this.detailData.ggccwcsj,
+          sjxcwcsj: this.detailData.sjxcwcsj
         },
         'details': []
       }
@@ -238,7 +369,7 @@ export default {
   },
   created () {
     this.detailData = deepClone(this.$route.params.detail)
-    console.log(this.detailData)
+    // console.log(this.detailData)
   },
   components: {
     DatetimePicker
@@ -297,6 +428,15 @@ export default {
         .item-text
           flex 1
           margin-left 0.3rem
+          .flex
+            display flex
+            align-items center
+            justify-content space-between
+            p
+              width 4rem
+            input
+              width 8rem
+              border 1px solid #999
           h4
             font-size 0.6rem
             margin-bottom 0.2rem

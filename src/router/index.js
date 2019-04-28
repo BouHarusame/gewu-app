@@ -2,7 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/views/login/login'
 import Task from '@/views/task/task'
+import TruckTask from '@/views/task/TruckTask'
 import TaskDetail from '@/views/task/taskDetail'
+import truckTaskDetail from '@/views/task/truckTaskDetail'
 import Mine from '@/views/mine/mine'
 
 Vue.use(Router)
@@ -15,6 +17,11 @@ const router = new Router({
       component: Task
     },
     {
+      path: '/truckTask',
+      name: 'truckTask',
+      component: TruckTask
+    },
+    {
       path: '/login',
       name: 'login',
       component: Login
@@ -25,19 +32,24 @@ const router = new Router({
       component: TaskDetail
     },
     {
+      path: '/truckTaskDetail/:id',
+      name: 'truckTaskDetail',
+      component: truckTaskDetail
+    },
+    {
       path: '/mine',
       name: 'mine',
       component: Mine
     }
-  ],
-  mode: 'history'
+  ]
+  // mode: 'history'
 })
 router.beforeEach((to, from, next) => {
-  const token = sessionStorage.getItem('auth-token')
+  const login = sessionStorage.getItem('login')
   if (to.name === 'login') {
     next()
   } else {
-    if (token === null) {
+    if (login === null) {
       next('/login')
     } else {
       next()

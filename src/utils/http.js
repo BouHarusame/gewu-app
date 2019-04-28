@@ -8,7 +8,7 @@ axios.defaults.baseURL = 'http://219.145.220.61:8888/railage/'
 axios.interceptors.request.use(
   config => {
     // const token = getCookie('名称')注意使用的时候需要引入cookie方法，推荐js-cookie
-    const token = sessionStorage.getItem('auth-token') || ''
+    const token = localStorage.getItem('auth-token') || ''
     config.data = JSON.stringify(config.data)
     config.headers = {
       'Content-Type': 'application/json',

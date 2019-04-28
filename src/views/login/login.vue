@@ -8,6 +8,12 @@
         <span class="login-content-label">密码：</span><input type="password"  class="login-content-value" placeholder="请输入密码" v-model="passWord">
       </div>
       <div class="login-content-item">
+        <mt-checklist
+          v-model="value"
+          :options="options">
+        </mt-checklist>
+      </div>
+      <div class="login-content-item">
         <button class="login-content-btn" @click="toLoginIn">登录</button>
       </div>
     </div>
@@ -15,17 +21,26 @@
 </template>
 <script>
 import md5 from 'js-md5'
-import { Toast } from 'mint-ui'
+import { Toast, Checklist } from 'mint-ui'
 export default {
   data () {
     return {
       userName: '',
-      passWord: ''
+      passWord: '',
+      pwd: '',
+      value: [],
+      options: ['记住密码']
     }
   },
   methods: {
     toLoginIn () {
-      let pwd = md5(`${this.userName}USER${this.passWord}PASSWORD`)
+      this.$router.push({ name: 'task' })
+      let pwd = ''
+      if (this.userName === localStorage.getItem('username')) {
+        pwd = this.pwd
+      } else {
+        pwd = md5(`${this.userName}USER${this.passWord}PASSWORD`)
+      }
       let options = {
         'userid': this.userName,
         'password': pwd
@@ -33,10 +48,14 @@ export default {
       if (this.userName && pwd) {
         this.$post('/login', options)
           .then(res => {
-            console.log(res)
+            // console.log(res)
             if (res.success) {
-              sessionStorage.setItem('auth-token', res.data.token)
-              sessionStorage.setItem('username', res.data.username)
+              localStorage.setItem('auth-token', res.data.token)
+              sessionStorage.setItem('login', 'success')
+              if (this.value.length > 0) {
+                localStorage.setItem('username', this.userName)
+                localStorage.setItem('password', pwd)
+              }
               this.$router.push({ name: 'task' })
             } else {
               Toast({
@@ -62,8 +81,17 @@ export default {
       }
     }
   },
+  created () {
+    this.userName = localStorage.getItem('username') || ''
+    let pwd = localStorage.getItem('password') || ''
+    if (pwd) {
+      this.passWord = pwd
+      this.pwd = pwd
+    }
+  },
   components: {
-    Toast
+    Toast,
+    Checklist
   }
 }
 </script>
@@ -71,7 +99,7 @@ export default {
 .login-wrapper
   width 100%
   height 100vh
-  background #f4f4f4 url('../../assets/bg.png')no-repeat center/100%
+  background #f4f4f4 url('../../assets/bg1.png')no-repeat center/100%
   display flex
   align-items center
   justify-content center
@@ -112,4 +140,7 @@ export default {
         color #fff
         border 0
         margin 0 auto
+      .mint-cell
+        background: rgba(0,0,0,0) !important;
+        min-height: 1rem !important;
 </style>

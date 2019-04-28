@@ -4,7 +4,7 @@
       <div class="avatar"></div>
       <div class="userName">{{userName}}</div>
     </div>
-    <tab-bar></tab-bar>
+    <tab-bar :current=2></tab-bar>
   </div>
 </template>
 <script>
