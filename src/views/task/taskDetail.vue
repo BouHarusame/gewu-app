@@ -15,10 +15,10 @@
               <p>调到时间</p>
             </div>
           </div>
-          <div class='item-right' @click="open('picker1')">设定</div>
+          <div class='item-right' @click="open('ddsj', 'value1','picker1')">设定</div>
           <!-- <div class='item-right' @click="open('picker1')" v-if='setting1'>设定</div> -->
           <!-- <div class='item-right1' v-else>设定</div> -->
-          <mt-datetime-picker
+          <mt-datetime-picker @touchmove.prevent
             ref='picker1'
             v-model='value1'
             :closeOnClickModal='false'
@@ -35,9 +35,9 @@
               <p>调出时间</p>
             </div>
           </div>
-          <div class='item-right' @click="open('picker2')">设定</div>
+          <div class='item-right' @click="open('dcsj', 'value2','picker2')">设定</div>
           <!-- <div class='item-right1' v-else>设定</div> -->
-          <mt-datetime-picker
+          <mt-datetime-picker @touchmove.prevent
             ref='picker2'
             v-model='value2'
             :closeOnClickModal='false'
@@ -80,9 +80,9 @@
               <p>卸一设防护完成时间</p>
             </div>
           </div>
-          <div class='item-right' @click="open('picker3')" >设定</div>
+          <div class='item-right' @click="open('x1sfhwcsj', 'value3','picker3')" >设定</div>
           <!-- <div class='item-right1' v-else>设定</div> -->
-          <mt-datetime-picker
+          <mt-datetime-picker @touchmove.prevent
             ref='picker3'
             v-model='value3'
             :closeOnClickModal='false'
@@ -99,9 +99,9 @@
               <p>卸二设防护完成时间</p>
             </div>
           </div>
-          <div class='item-right' @click="open('picker4')">设定</div>
+          <div class='item-right' @click="open('x2sfhwcsj', 'value4','picker4')">设定</div>
           <!-- <div class='item-right1' v-else>设定</div> -->
-          <mt-datetime-picker
+          <mt-datetime-picker @touchmove.prevent
             ref='picker4'
             v-model='value4'
             :closeOnClickModal='false'
@@ -118,9 +118,9 @@
               <p>卸一撤除防护完成时间</p>
             </div>
           </div>
-          <div class='item-right' @click="open('picker5')">设定</div>
+          <div class='item-right' @click="open('x1ccfhwcsj', 'value5','picker5')">设定</div>
           <!-- <div class='item-right1' v-else>设定</div> -->
-          <mt-datetime-picker
+          <mt-datetime-picker @touchmove.prevent
             ref='picker5'
             v-model='value5'
             :closeOnClickModal='false'
@@ -137,9 +137,9 @@
               <p>卸二撤除防护完成时间</p>
             </div>
           </div>
-          <div class='item-right' @click="open('picker6')">设定</div>
+          <div class='item-right' @click="open('x2ccfhwcsj', 'value6','picker6')">设定</div>
           <!-- <div class='item-right1' v-else>设定</div> -->
-          <mt-datetime-picker
+          <mt-datetime-picker @touchmove.prevent
             ref='picker6'
             v-model='value6'
             :closeOnClickModal='false'
@@ -156,9 +156,9 @@
               <p>预计卸车完成时间</p>
             </div>
           </div>
-          <div class='item-right' @click="open('picker7')">设定</div>
+          <div class='item-right' @click="open('yjxcwcsj', 'value7','picker7')">设定</div>
           <!-- <div class='item-right1' v-else>设定</div> -->
-          <mt-datetime-picker
+          <mt-datetime-picker @touchmove.prevent
             ref='picker7'
             v-model='value7'
             :closeOnClickModal='false'
@@ -175,9 +175,9 @@
               <p>更改预计卸车完成时间</p>
             </div>
           </div>
-          <div class='item-right' @click="open('picker8')">设定</div>
+          <div class='item-right' @click="open('ggccwcsj', 'value8','picker8')">设定</div>
           <!-- <div class='item-right1' v-else>设定</div> -->
-          <mt-datetime-picker
+          <mt-datetime-picker @touchmove.prevent
             ref='picker8'
             v-model='value8'
             :closeOnClickModal='false'
@@ -194,15 +194,19 @@
               <p>实际卸车完成时间</p>
             </div>
           </div>
-          <div class='item-right' @click="open('picker9')">设定</div>
+          <div class='item-right' @click="open('sjxcwcsj','value9','picker9')">设定</div>
           <!-- <div class='item-right1' v-else>设定</div> -->
-          <mt-datetime-picker
+          <mt-datetime-picker @touchmove.prevent
             ref='picker9'
             v-model='value9'
             :closeOnClickModal='false'
-            year-format="{value}年"
-            month-format="{value}月"
-            date-format="{value} 日"
+            year-format="{value}"
+            month-format="{value}"
+            date-format="{value}"
+            hour-format="{value}"
+            minute-format="{value}"
+            second-format="{value}"
+            type="datetime"
             @visible-change='handleVisibleChange'
             @confirm='handleChange9'>
           </mt-datetime-picker>
@@ -229,6 +233,7 @@ export default {
         ggccwcsj: '',
         sjxcwcsj: ''
       },
+      detail: {},
       value1: '',
       value2: '',
       value3: '',
@@ -278,7 +283,12 @@ export default {
     }
   },
   methods: {
-    open (picker) {
+    open (selectedValue, dateVal, picker) {
+      if (this.detailData[selectedValue]) {
+        this[dateVal] = new Date(this.detailData[selectedValue])
+      } else {
+        this[dateVal] = new Date()
+      }
       this.$refs[picker].open()
     },
     handleVisibleChange (isVisible) {
@@ -296,19 +306,19 @@ export default {
       // this.setting2 = false
     },
     handleChange3 (value) {
-      this.handleChange('hjsj', value)
+      this.handleChange('x1sfhwcsj', value)
       // this.setting3 = false
     },
     handleChange4 (value) {
-      this.handleChange('hjsm', value)
+      this.handleChange('x2sfhwcsj', value)
       // this.setting4 = false
     },
     handleChange5 (value) {
-      this.handleChange('x1sfhwcsj', value)
+      this.handleChange('x1ccfhwcsj', value)
       // this.setting5 = false
     },
     handleChange6 (value) {
-      this.handleChange('x2sfhwcsj', value)
+      this.handleChange('x2ccfhwcsj', value)
     },
     handleChange7 (value) {
       this.handleChange('yjxcwcsj', value)

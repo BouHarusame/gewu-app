@@ -7,7 +7,7 @@
       </div>
       <span class="text" @click="handleCancelSearch">取消</span>
     </div>
-    <div class="page-loadmore-wrapper" ref="wrapper">
+    <div class="page-loadmore-wrapper" ref="wrapper" >
       <mt-loadmore :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore">
         <div class="task-content">
           <ul>
@@ -129,7 +129,7 @@ export default {
           // console.log('allLoaded true')
           this.allLoaded = true
         }
-        this.$refs.loadmore.onBottomLoaded()
+        // this.$refs.loadmore.onBottomLoaded()
       }, 1500)
     }
   },

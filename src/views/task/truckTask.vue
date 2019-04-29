@@ -16,8 +16,8 @@
                 <div class="item-icon">
                 </div>
                 <div class="item-text">
-                  <h4>{{ item.cpc }}</h4>
-                  <p>{{ item.cpc }} 的卸车单，请登记处理！</p>
+                  <h4>{{ item.cpc.substring(0,10) }}</h4>
+                  <p>{{ item.cpc.substring(0,10) }} 的卸车单，请登记处理！</p>
                 </div>
               </div>
               <div class="item-right" @click="handleClickDetail(item)">处理</div>
@@ -129,8 +129,8 @@ export default {
           // console.log('allLoaded true')
           this.allLoaded = true
         }
-        this.$refs.loadmore.onBottomLoaded()
-      }, 1500)
+        // this.$refs.loadmore.onBottomLoaded()
+      }, 2000)
     }
   },
   created () {
