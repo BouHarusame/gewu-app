@@ -17,7 +17,7 @@
                 </div>
                 <div class="item-text">
                   <h4>{{ item.cph }}</h4>
-                  <p>{{ handleFormatDate(item.x1sfhwcsj) }} 的卸车单，请登记处理！</p>
+                  <p>{{ item.cph }} 的卸车单，请登记处理！</p>
                 </div>
               </div>
               <div class="item-right" @click="handleClickDetail(item)">处理</div>

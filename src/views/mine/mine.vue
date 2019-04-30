@@ -16,7 +16,7 @@ export default {
     }
   },
   created () {
-    this.userName = sessionStorage.getItem('username') || '用户名'
+    this.userName = window.localStorage.getItem('username') || '用户名'
   },
   components: {
     tabBar

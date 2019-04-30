@@ -77,7 +77,7 @@
             </div>
             <div class='item-text'>
               <h4>{{ handleToFormat(detailData.z1sfhwcsj) }}</h4>
-              <p>卸一设防护完成时间</p>
+              <p>装一设防护完成时间</p>
             </div>
           </div>
           <div class='item-right' @click="open('z1sfhwcsj', 'value3','picker3')" >设定</div>
@@ -96,7 +96,7 @@
             </div>
             <div class='item-text'>
               <h4>{{ handleToFormat(detailData.z2sfhwcsj) }}</h4>
-              <p>卸二设防护完成时间</p>
+              <p>装二设防护完成时间</p>
             </div>
           </div>
           <div class='item-right' @click="open('z2sfhwcsj', 'value4','picker4')">设定</div>
@@ -115,7 +115,7 @@
             </div>
             <div class='item-text'>
               <h4>{{ handleToFormat(detailData.z1ccfhwcsj) }}</h4>
-              <p>卸一撤除防护完成时间</p>
+              <p>装一撤除防护完成时间</p>
             </div>
           </div>
           <div class='item-right' @click="open('z1ccfhwcsj', 'value5','picker5')">设定</div>
@@ -134,7 +134,7 @@
             </div>
             <div class='item-text'>
               <h4>{{ handleToFormat(detailData.z2ccfhwcsj) }}</h4>
-              <p>卸二撤除防护完成时间</p>
+              <p>装二撤除防护完成时间</p>
             </div>
           </div>
           <div class='item-right' @click="open('z2ccfhwcsj', 'value6','picker6')">设定</div>
@@ -153,7 +153,7 @@
             </div>
             <div class='item-text'>
               <h4>{{ handleToFormat(detailData.yjzcwcsj) }}</h4>
-              <p>预计卸车完成时间</p>
+              <p>预计装车完成时间</p>
             </div>
           </div>
           <div class='item-right' @click="open('yjzcwcsj', 'value7','picker7')">设定</div>
@@ -172,7 +172,7 @@
             </div>
             <div class='item-text'>
               <h4>{{ handleToFormat(detailData.ggzcwcsj) }}</h4>
-              <p>更改预计卸车完成时间</p>
+              <p>更改预计装车完成时间</p>
             </div>
           </div>
           <div class='item-right' @click="open('ggzcwcsj', 'value8','picker8')">设定</div>
@@ -191,7 +191,7 @@
             </div>
             <div class='item-text'>
               <h4>{{ handleToFormat(detailData.sjzcwcsj) }}</h4>
-              <p>实际卸车完成时间</p>
+              <p>实际装车完成时间</p>
             </div>
           </div>
           <div class='item-right' @click="open('sjzcwcsj','value9','picker9')">设定</div>
