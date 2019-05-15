@@ -16,7 +16,7 @@
                 <div class="item-icon">
                 </div>
                 <div class="item-text">
-                  <h4>{{ item.cph }}</h4>
+                  <h4>{{ handleFormatDate(item.dhsj) }}</h4>
                   <p>{{ handleFormatDate(item.dhsj) }} 的卸车单，请登记处理！</p>
                 </div>
               </div>
@@ -83,7 +83,7 @@ export default {
     handleFormatDate (val) {
       let date = new Date(val)
       // date.toLocaleDateString()
-      return formatDate(date, 'yyyy-MM-dd')
+      return formatDate(date, 'yyyy-MM-dd hh:mm')
     },
     handleSearch () {
       // console.log(111)
