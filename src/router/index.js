@@ -3,8 +3,10 @@ import Router from 'vue-router'
 import Login from '@/views/login/login'
 import Task from '@/views/task/task'
 import TruckTask from '@/views/task/TruckTask'
+import truckProgress from '@/views/task/truckProgress'
 import TaskDetail from '@/views/task/taskDetail'
 import truckTaskDetail from '@/views/task/truckTaskDetail'
+import truckProgressDetail from '@/views/task/truckProgressDetail'
 import Mine from '@/views/mine/mine'
 
 Vue.use(Router)
@@ -22,6 +24,11 @@ const router = new Router({
       component: TruckTask
     },
     {
+      path: '/truckProgress',
+      name: 'truckProgress',
+      component: truckProgress
+    },
+    {
       path: '/login',
       name: 'login',
       component: Login
@@ -35,6 +42,11 @@ const router = new Router({
       path: '/truckTaskDetail/:id',
       name: 'truckTaskDetail',
       component: truckTaskDetail
+    },
+    {
+      path: '/truckProgressDetail/:id',
+      name: 'truckProgressDetail',
+      component: truckProgressDetail
     },
     {
       path: '/mine',

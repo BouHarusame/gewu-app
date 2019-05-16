@@ -8,7 +8,11 @@
       <div class="icon"><i class="fa fa-subway"></i></div>
       <div class="text">装车登记</div>
     </div>
-    <div class="tab-item" :class="current === 2 ? 'active': ''" @click="handleToMine">
+    <div class="tab-item" :class="current === 2 ? 'active': ''" @click="handleToTruckProgress">
+      <div class="icon"><i class="fa fa-subway"></i></div>
+      <div class="text">装车进度</div>
+    </div>
+    <div class="tab-item" :class="current === 3 ? 'active': ''" @click="handleToMine">
       <div class="icon"><i class="fa fa-user-circle-o"></i></div>
       <div class="text">我</div>
     </div>
@@ -32,6 +36,9 @@ export default {
     },
     handleToTruckTask () {
       this.$router.push({ name: 'truckTask' })
+    },
+    handleToTruckProgress () {
+      this.$router.push({ name: 'truckProgress' })
     },
     handleToMine () {
       this.$router.push({ name: 'mine' })
@@ -72,7 +79,6 @@ export default {
         padding 0.2rem 0
     .text
       font-size 0.6rem
-      margin-left 0.2rem
     &:nth-child(n+2)
       border-left 1px solid #e1e1e1
   .active
