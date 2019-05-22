@@ -535,7 +535,7 @@ export default {
             })
           } else {
             Toast({
-              message: res.code,
+              message: res.message || '设定失败',
               position: 'center',
               duration: 3000
             })

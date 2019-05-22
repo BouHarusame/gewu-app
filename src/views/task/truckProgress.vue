@@ -16,7 +16,7 @@
                 <div class="item-icon">
                 </div>
                 <div class="item-text">
-                  <h4>{{ item.cpc.substring(0,10) }}</h4>
+                  <h4>{{handleToText(item.zcx)}} {{ item.cpc.substring(0,10) }}</h4>
                   <p>{{ item.cpc.substring(0,10) }} 的装车单，请登记处理！</p>
                 </div>
               </div>
@@ -75,6 +75,17 @@ export default {
             })
           }
         })
+    },
+    handleToText (val) {
+      if (val === 'Z1') {
+        return '装一'
+      }
+      if (val === 'Z2') {
+        return '装二'
+      }
+      if (!val) {
+        return ''
+      }
     },
     handleClickDetail (item) {
       this.$router.push({name: 'truckProgressDetail', params: { id: item.id, detail: item }})

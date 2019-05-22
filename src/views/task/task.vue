@@ -16,7 +16,7 @@
                 <div class="item-icon">
                 </div>
                 <div class="item-text">
-                  <h4>{{ handleFormatDate(item.dhsj) }}</h4>
+                  <h4>{{item.address}} {{ handleFormatDate(item.dhsj) }}</h4>
                   <p>{{ handleFormatDate(item.dhsj) }} 的卸车单，请登记处理！</p>
                 </div>
               </div>
