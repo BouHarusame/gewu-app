@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
+// import Mui from 'vue-awesome-mui'
 import App from './App'
 import router from './router'
 import { post, fetch, patch, put } from './utils/http'
@@ -17,6 +18,7 @@ Vue.prototype.$patch = patch
 Vue.prototype.$put = put
 Vue.config.productionTip = false
 Vue.use(MintUI)
+// Vue.use(Mui)
 
 /* eslint-disable no-new */
 new Vue({

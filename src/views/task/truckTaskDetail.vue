@@ -359,7 +359,7 @@ export default {
         },
         'details': []
       }
-      this.$post('/zcgl/clsxb/update', query)
+      this.$post('/zcgl/clsxb/updateApp', query)
         .then(res => {
           if (res.success) {
             Toast({

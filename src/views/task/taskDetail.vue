@@ -347,6 +347,7 @@ export default {
           id: this.detailData.id,
           flag: 'U',
           x1ccfhwcsj: this.detailData.x1ccfhwcsj,
+          x2ccfhwcsj: this.detailData.x21ccfhwcsj,
           ddsj: this.detailData.ddsj,
           dcsj: this.detailData.dcsj,
           hjsj: this.detailData.hjsj,
@@ -359,7 +360,7 @@ export default {
         },
         'details': []
       }
-      this.$post('/dhcl/xcjddj/update', query)
+      this.$post('/dhcl/xcjddj/updateApp', query)
         .then(res => {
           if (res.success) {
             Toast({

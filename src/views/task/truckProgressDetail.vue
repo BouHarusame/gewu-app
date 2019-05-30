@@ -525,7 +525,7 @@ export default {
         },
         'details': []
       }
-      this.$post('/zcgl/zcjd/update', query)
+      this.$post('/zcgl/zcjd/updateApp', query)
         .then(res => {
           if (res.success) {
             Toast({
