@@ -65,8 +65,28 @@
             <div class='item-text'>
               <!-- <h4>{{ handleToFormat(detailData.ggxcwcsj) }}</h4> -->
               <div class="flex">
-                <p>核检说明</p>
-                <input v-model="detailData.hjsm"  />
+                <p class="flex-center">核检说明</p>
+                <!-- <input v-model="detailData.zhjsm"  /> -->
+              </div>
+              <div class="flex">
+                <p>车辆调入作业时间</p>
+                <input type="number" v-model="detailData.afiled">
+              </div>
+              <div class="flex">
+                <p>调入列检检查作业时间</p>
+                <input type="number" v-model="detailData.bfiled">
+              </div>
+              <div class="flex">
+                <p>调出列检、货运检查车辆时间</p>
+                <input type="number" v-model="detailData.cfiled">
+              </div>
+              <div class="flex">
+                <p>车辆调出作业时间</p>
+                <input type="number" v-model="detailData.dfiled">
+              </div>
+              <div class="flex">
+                <p>其他</p>
+                <input type="number" v-model="detailData.efiled">
               </div>
             </div>
           </div>
@@ -231,7 +251,12 @@ export default {
         x2sfhwcsj: '',
         yjxcwcsj: '',
         ggccwcsj: '',
-        sjxcwcsj: ''
+        sjxcwcsj: '',
+        afiled: '',
+        bfiled: '',
+        cfiled: '',
+        dfiled: '',
+        efiled: ''
       },
       detail: {},
       value1: '',
@@ -356,7 +381,12 @@ export default {
           x2sfhwcsj: this.detailData.x2sfhwcsj,
           yjxcwcsj: this.detailData.yjxcwcsj,
           ggccwcsj: this.detailData.ggccwcsj,
-          sjxcwcsj: this.detailData.sjxcwcsj
+          sjxcwcsj: this.detailData.sjxcwcsj,
+          afiled: this.detailData.afiled,
+          bfiled: this.detailData.bfiled,
+          cfiled: this.detailData.cfiled,
+          dfiled: this.detailData.dfiled,
+          efiled: this.detailData.efiled
         },
         'details': []
       }
@@ -424,7 +454,7 @@ export default {
       box-sizing border-box
     .task-detail-item
       width 13.8rem
-      height 1.8rem
+      // height 1.8rem
       display flex
       justify-content space-between
       align-items center
@@ -443,11 +473,21 @@ export default {
             display flex
             align-items center
             justify-content space-between
+            margin 0.2rem 0
             p
               width 4rem
             input
               width 8rem
               border 1px solid #999
+              font-size 0.5rem
+              padding 0.2rem 0
+            .flex-center
+              text-align center
+              height 1rem
+              line-height 1rem
+              width 100%
+            .flex-key
+              width 4rem
           h4
             font-size 0.6rem
             margin-bottom 0.2rem
